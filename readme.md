@@ -16,3 +16,12 @@ The following base features will be implemented
 - Rate limiting
 - Locking accounts
 - Testing
+
+
+# TypeOrm
+
+TypeOrm is being used for this tutorial.
+
+1. Run `npm i` command
+2. Setup database settings inside `ormconfig.json` file
+3. Run `npm start` command
