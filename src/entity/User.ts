@@ -1,18 +1,27 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  BeforeInsert,
+  BaseEntity,
+} from "typeorm";
+
+// When working with typescript - sometimes there won't be definition
+// files...
+import { v4 as uuidv4 } from "uuid";
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
+  @PrimaryColumn("uuid") id: string;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column("varchar", { length: 255 }) email: string;
 
-    @Column()
-    firstName: string;
+  @Column("text") password: string;
 
-    @Column()
-    lastName: string;
-
-    @Column()
-    age: number;
-
+  // TypeORM allows you to run functions before
+  // inserting data, using the following:
+  @BeforeInsert()
+  addId() {
+    this.id = uuidv4();
+  }
 }
