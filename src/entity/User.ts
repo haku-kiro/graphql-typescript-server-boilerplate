@@ -6,11 +6,11 @@ import {
   BaseEntity,
 } from "typeorm";
 
-// When working with typescript - sometimes there won't be definition
-// files...
+// When working with typescript - sometimes there won't be
+// type definition files...
 import { v4 as uuidv4 } from "uuid";
 
-@Entity()
+@Entity("users")
 export class User extends BaseEntity {
   @PrimaryColumn("uuid") id: string;
 
